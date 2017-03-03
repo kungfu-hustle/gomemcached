@@ -2,6 +2,7 @@
 package memcached
 
 import (
+	"crypto/tls"
 	"encoding/binary"
 	"fmt"
 	"io"
@@ -41,6 +42,16 @@ var (
 // Connect to a memcached server.
 func Connect(prot, dest string) (rv *Client, err error) {
 	conn, err := dialFun(prot, dest)
+	if err != nil {
+		return nil, err
+	}
+	return Wrap(conn)
+}
+
+// Connect to a memcached server on tls.
+func ConnectSSL(prot, dest string, conf *tls.Config) (rv *Client, err error) {
+	dialer := &net.Dialer{Timeout: DefaultDialTimeout}
+	conn, err := tls.DialWithDialer(dialer, prot, dest, conf)
 	if err != nil {
 		return nil, err
 	}
