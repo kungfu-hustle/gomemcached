@@ -12,8 +12,8 @@ import (
 	"sync"
 	"time"
 
-	"github.com/couchbase/gomemcached"
 	"github.com/couchbase/goutils/logging"
+	"github.com/kungfu-hustle/gomemcached"
 	"sync/atomic"
 )
 

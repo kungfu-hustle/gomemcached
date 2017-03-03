@@ -8,8 +8,8 @@ import (
 	"encoding/binary"
 	"errors"
 	"fmt"
-	"github.com/couchbase/gomemcached"
 	"github.com/couchbase/goutils/logging"
+	"github.com/kungfu-hustle/gomemcached"
 	"strconv"
 	"sync"
 )
